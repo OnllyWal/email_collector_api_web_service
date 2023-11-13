@@ -5,11 +5,11 @@ import email
 def email_reader():
     
     ''' Here you have to insert the email and the 16 characters password, avalaible by Google Account (Security Page)'''
-    login = "donarosadata@gmail.com"
-    passw = "dmrs nqbs hmvq otpg"
+    login = "email@example.com"
+    passw = "xxxx xxxx xxxx xxxx"
 
     '''Acessing the server and conecting with..'''
-    objCon = imaplib.IMAP4_SSL("imap.gmail.com")
+    objCon = imaplib.IMAP4_SSL("imap.gmail.com") # if you gonna usa gmail
     conection = objCon.login(login,passw)
 
     '''Where we want to acess: the Inbox page'''
@@ -38,7 +38,7 @@ def email_reader():
             if part.get_content_maintype() == 'text' and part.get_content_type() == 'text/plain':
                 if part.get_payload(decode=True) == b'\r\n':
                     continue
-                register = open(f'Cadastro/{nome[0]}', 'wb')
+                register = open('your directory/'+nome[0], 'wb')
                 register.write(part.get_payload(decode=True))
                 register.close
 
@@ -48,7 +48,7 @@ def email_reader():
             if part.get('Content-Disposition') is None:
                 continue
             filename = part.get_filename()
-            dir = open(f'Fotos/{filename}', 'wb')
+            dir = open('your directory/'+filename, 'wb')
             dir.write(part.get_payload(decode=True))
             dir.close()
             return True
