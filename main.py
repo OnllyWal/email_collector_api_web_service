@@ -1,11 +1,13 @@
-from apiemail import acess, text, attachment
+from apiemail import acess, text, attachment, user_info
 import email
 import imaplib
 
 login = "donarosadata@gmail.com"
 passw = "dmrs nqbs hmvq otpg"
 
-objCon, ids = acess(login, passw)
+status = 'ALL'
+
+objCon, ids = acess(login, passw, status)
 
 for num in ids[0].split():
     results, data = objCon.fetch(num, '(RFC822)')
@@ -18,8 +20,8 @@ for num in ids[0].split():
 
         '''Detecting who send the message'''
         if part['From'] !=  None:
-            nome = part['From'].split(" ")
+            mail, subject = user_info(part)
         if part.get_content_maintype() == 'text' and part.get_content_type() == 'text/plain':
-            text(part, nome)
+            text(part, mail, subject)
         if part.get_content_maintype() != 'multipart' and part.get('Content-Disposition') is not None:
-            attachment(part)
+            attachment(part, mail, subject)
