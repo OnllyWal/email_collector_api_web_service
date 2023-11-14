@@ -37,9 +37,8 @@ def attachment(part, mail, subject):
 
 def user_info(part):
     name = part['From'].split(" ")
-    mail = name[-1].replace('@', '_')
-    mail = mail.replace('.', '_')
-    mail = mail.replace('<', '')
-    mail = mail.replace('>','')
     subject = part['Subject'].split(" ")
+    char_remove = ['@', '.', '<', '>']
+    for char in char_remove:
+        mail = mail.replace(char, '_')
     return mail, subject
