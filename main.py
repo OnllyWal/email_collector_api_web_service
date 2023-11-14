@@ -21,6 +21,8 @@ for num in ids[0].split():
         '''Detecting who send the message'''
         if part['From'] !=  None:
             mail, subject = user_info(part)
+
+        '''Detecting if its a text or a attachment and save on directory'''
         if part.get_content_maintype() == 'text' and part.get_content_type() == 'text/plain':
             text(part, mail, subject)
         if part.get_content_maintype() != 'multipart' and part.get('Content-Disposition') is not None:
