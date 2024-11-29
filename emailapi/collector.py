@@ -2,7 +2,7 @@ import imaplib
 import email as email_lib
 import os
 import re
-from emailapi.email_obj import Direct_Email, Forwarded_Email
+from models.email_model import Direct_Email, Forwarded_Email
 
 class EmailCollector:
     def __init__(self, email_address: str, password: str):

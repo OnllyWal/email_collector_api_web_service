@@ -4,7 +4,7 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 import os
-from emailapi.email_obj import Email
+from models.email_model import Email
 
 class EmailSender:
     def __init__(self, email_address: str, password: str):
