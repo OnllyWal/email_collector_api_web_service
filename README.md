@@ -86,6 +86,7 @@ DATABASE_URL=postgresql://<usuario>:<senha>@<host>:<porta>/<nome_do_banco>
 ---
 
 ## **Arquiterura do Projeto**
+   ```
    project
    ├── controllers/
    │   ├── activate_email.py: Inicializa a api de email, coletando emails
@@ -101,6 +102,7 @@ DATABASE_URL=postgresql://<usuario>:<senha>@<host>:<porta>/<nome_do_banco>
    │   ├── email_model.py: Definição das classes de Email
    ├── main.py: Inicializa os dois serviços (emailapi e flaskapi), em threads diferentes
    └── requirements.txt
+   ```
 
 ---
 
