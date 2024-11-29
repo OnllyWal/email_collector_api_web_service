@@ -86,12 +86,21 @@ DATABASE_URL=postgresql://<usuario>:<senha>@<host>:<porta>/<nome_do_banco>
 ---
 
 ## **Arquiterura do Projeto**
-   - collector.py: Realiza a coleta de e-mails e cria objetos Email.
-   - sender.py: Envia os e-mails de resposta.
-   - connection_flask.py: Prepara os dados da coleta para o Flask
-   - app.py: Servidor Flask para interface e gerenciamento
-   - database.py: Configuração da conexão com o banco de dados.(soon)
-   - models.py: Define as tabelas e estrutura do banco de dados.(soon)
+   project
+   ├── controllers/
+   │   ├── activate_email.py: Inicializa a api de email, coletando emails
+   │   ├── api_connector.py: Transforma os objetos de email nos dados a serem enviados para o framework 
+   ├── emailapi/
+   │   ├── collector.py: Coleta emails via IMAP 
+   │   ├── sender.py: Envia emails via SMTP 
+   ├── flaskapi/
+   │   ├── __init__.py: Inicialização e configuração do framework Flask 
+   │   ├── routes.py: Rotas GET e POST do framework Flask 
+   ├── models/
+   │   ├── db_model.py: Definição da classe de Email do bando de dados, e das funções de pull e push dos dados
+   │   ├── email_model.py: Definição das classes de Email
+   ├── main.py: Inicializa os dois serviços (emailapi e flaskapi), em threads diferentes
+   └── requirements.txt
 
 ---
 
