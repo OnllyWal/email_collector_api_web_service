@@ -10,6 +10,9 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://avnadmin:AVNS_PbDFe9GkvFNPPTDFDJG@proposervice-walcandeia-bd.g.aivencloud.com:20761/defaultdb'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+    app.config['UPLOAD_FOLDER'] = './uploads'
+    os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+
     # Inicialização do banco de dados
     db.init_app(app)
 

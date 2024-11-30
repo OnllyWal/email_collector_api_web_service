@@ -1,5 +1,4 @@
 import time
-from emailapi.sender import EmailSender
 from emailapi.collector import EmailCollector
 from controller.api_connector import enviar_email
 
@@ -10,10 +9,7 @@ def coletar_emails():
 
     # Configuração do coletor e do sender
     collector = EmailCollector(email_address, password)
-    sender = EmailSender(email_address, password)
 
-    # Conecta ao servidor SMTP
-    sender.connect()
 
     while True:
         # Coleta Emails, cria objetos e armazena na lista collector.emails
