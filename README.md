@@ -1,4 +1,4 @@
-# **Sistema de Coleta e Envio de E-mails**
+# **Sistema de Coleta de Emails integrado com Flask Framework**
 
 Este projeto implementa um sistema automatizado para coletar e-mails, processá-los, e enviar respostas conforme regras definidas. O sistema utiliza Flask para gerenciar a interface e interagir com um banco de dados PostgreSQL configurado no Aiven.
 
