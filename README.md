@@ -7,9 +7,10 @@ Este projeto implementa um sistema automatizado para coletar e-mails, processá-
 ## **Entendendo o Sistema**
 
 Primeiramente existem duas situações:
-Situação 1: 
+
+- Situação 1: 
    Agente(Professor) solicita a publicação da defesa de mestrado de um aluno, e os repectivos documentos para registro da defesa. No email, estão presentes os dados sobre a banca.
-Situação 2: 
+- Situação 2: 
    Agente(Aluno) solicita o acesso aos computadores do laboratório do campus, para isso é necessário ser criado o usuário e a senha do aluno. Nos dados do email, estão presentes o nome do aluno.
 
 
