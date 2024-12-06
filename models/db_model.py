@@ -36,7 +36,7 @@ def push_emails(dados):
         endereco=dados['endereco'],
         titulo=dados['titulo'],
         corpo=dados['corpo'],
-        anexos=",".join(dados['anexos']),  # Armazenando anexos como uma string separada por vírgulas
+        anexos= dados['anexos'],  # Armazenando anexos como uma string separada por vírgulas
         origin_name=dados['origin_name'],
         origin_address=dados['origin_address'],
         status="Armazenado"
@@ -57,7 +57,7 @@ def pull_emails():
             "endereco": email.endereco,
             "titulo": email.titulo,
             "corpo": email.corpo,
-            "anexos": email.anexos.split(","),  # Converte a string de anexos de volta para uma lista
+            "anexos": email.anexos,  # Converte a string de anexos de volta para uma lista
             "origin_name": email.origin_name,
             "origin_address": email.origin_address,
             "status": email.status
