@@ -44,9 +44,9 @@ class EmailCollector:
                 if email_obj:
                       # Processa o email e retorna um objeto Email
                     if isinstance(email_obj, Direct_Email):
-                        self.emails_dict['d'].append(email_obj)  # Adiciona o objeto Email à lista
+                        self.emails_dict.setdefault('d', []).append(email_obj)  # Adiciona o objeto Email à lista
                     if isinstance(email_obj, Forwarded_Email):
-                        self.emails_dict['f'].append(email_obj)
+                        self.emails_dict.setdefault('f', []).append(email_obj)
 
                 # Marca o email como lido
                 self.connection.store(num, '+FLAGS', '\\Seen')
@@ -61,7 +61,6 @@ class EmailCollector:
             sender_name = msg['From'].split(" ")[0] if msg['From'] else "Desconhecido"
             email_name = msg['From'].split(" ")[-1].strip('<>') if len(msg['From'].split(" ")) > 0 else "Desconhecido"
             complete_name = msg['From'].split('<')[0].strip() if msg['From'] else "Desconhecido"
-            raw = str(msg)
 
             attachments = []  # Lista para armazenar os caminhos dos anexos
             email_body = ''  # String para armazenar o corpo do email

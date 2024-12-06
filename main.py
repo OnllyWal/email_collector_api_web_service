@@ -1,6 +1,6 @@
 import threading
 from flaskapi import create_app, db
-from controller.activate_email import coletar_emails
+from controllers.activate_email import coletar_emails
 
 def main():
     app = create_app()
@@ -15,7 +15,7 @@ def main():
     email_thread.start()
 
     # Rodar o aplicativo Flask
-    app.run(debug=True, use_reloader=False)  # use_reloader=False para evitar conflito com threading
+    app.run(host="0.0.0.0", port=5000) # use_reloader=False para evitar conflito com threading
 
 
 if __name__ == "__main__":

@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+import os
 
 # Criação do objeto db (compartilhado em toda a aplicação)
 db = SQLAlchemy()
@@ -10,9 +11,9 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://avnadmin:AVNS_PbDFe9GkvFNPPTDFDJG@proposervice-walcandeia-bd.g.aivencloud.com:20761/defaultdb'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    app.config['UPLOAD_FOLDER'] = './uploads'
+    app.config['UPLOAD_FOLDER'] = '/home/wal/APIPropos/email_collector_api_web_service/uploads'
     os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
-
+    
     # Inicialização do banco de dados
     db.init_app(app)
 

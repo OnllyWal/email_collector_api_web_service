@@ -63,3 +63,27 @@ def pull_emails():
             "status": email.status
         })
     return email_list
+
+def update_emails_db(email_id, dados):
+    email = Emaildb.query.get(email_id)
+    
+    if email:
+        # Atualizar os campos do email com os novos dados
+        email.tipo = dados['tipo']
+        email.from_name = dados['from_name']
+        email.from_complete_name = dados['from_complete_name']
+        email.endereco = dados['endereco']
+        email.titulo = dados['titulo']
+        email.corpo = dados['corpo']
+        email.anexos = dados['anexos']  # Armazenando anexos como uma string separada por vírgulas
+        email.origin_name = dados['origin_name']
+        email.origin_address = dados['origin_address']
+        email.status = dados['status']  # Atualizando o status, caso seja necessário
+        
+        # Commit para salvar as mudanças no banco
+        db.session.commit()
+        return {"message": "Email atualizado com sucesso!"}, 200
+    else:
+        # Se o email não for encontrado
+        return {"error": "Email não encontrado"}, 404
+
