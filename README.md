@@ -1,20 +1,10 @@
-# **Sistema de Coleta, Processamento, e Envio de Emails integrado com Flask Framework**
+# **Sistema de Coleta e Envio de E-mails**
 
-Este projeto implementa um sistema automatizado para coletar e-mails, processá-los, e retorna-los. O sistema utiliza Flask para gerenciar a interface e interagir com um banco de dados PostgreSQL configurado no Aiven. O objetivo principal desse sistema é automatizar os processos atrelados ao envio dos emails, atualmente alocados em "Solicitação de Defesa" e "Acesso a Computadores".
-É importante salientar que o atual repositório funciona independentemente para Coleta integrado ao Framework, porém o sistema cistado é a junção de 5 repositórios, que seram citados detalhadamente abaixo.
+Este projeto implementa um sistema automatizado para coletar e-mails, processá-los, e enviar respostas conforme regras definidas. O sistema utiliza Flask para gerenciar a interface e interagir com um banco de dados PostgreSQL configurado no Aiven.
 
 ---
-## **Entendendo o Sistema**
 
-Primeiramente existem duas situações:
-
-- Situação 1: 
-   Agente(Professor) solicita a publicação da defesa de mestrado de um aluno, e os repectivos documentos para registro da defesa. No email, estão presentes os dados sobre a banca.
-- Situação 2: 
-   Agente(Aluno) solicita o acesso aos computadores do laboratório do campus, para isso é necessário ser criado o usuário e a senha do aluno. Nos dados do email, estão presentes o nome do aluno.
-
-
-## **email_collector_api_web_service(presente repositório)**
+## **Funcionalidades**
 
 1. **Coleta de E-mails:**
    - Coleta automática de e-mails a cada 1 minuto.
@@ -28,45 +18,11 @@ Primeiramente existem duas situações:
    - Armazena logs de e-mails processados e status de envio.
    - Utiliza PostgreSQL configurado via **Aiven** para armazenamento.
 
-4. **Post Flask:**
-   - Insere os email coletados no endpoint definido.
-   - Pemite o acesso aos dados via requisições HTTP
+4. **Interface Flask:**
+   - Interface simples para visualizar e gerenciar os e-mails processados.
+   - Permite auditoria e consulta ao banco de dados.
 
 ---
-## **neural_categorizer(https://github.com/OnllyWal/neural_categorizer)**
-
-1. **Categorização dos Emails:**
-   - Através do título do email, categoriza o tipo do email em Defesa ou Acesso.
-
-2. **Put Flask:**
-   - Atualiza o tipo do email para Defesa ou Acesso
-
----
-## **defesa_api_web_service(https://github.com/OnllyWal/defesa_api_web_service)**
-
-1. **Cria Documentação:**
-   - Identificado o tipo de email, cria os documentos necessários para a defesa, com os exatos dados da banca apresentados no email.
-  
-2. **Cria Chamado:**
-  - Com os dados do email, inicia o processo para criação de chamado.
-
-3. **Put Flask:**
-   - Atualiza os dados do email, com os anexos.
-   
----
-## **acesso_api_web_service(https://github.com/OnllyWal/acesso_api_web_service)**
-
-1. **Cria Login e Senha:**
-   - Identificado o tipo de email, cria o login e senha do aluno em todos os computadores listados por IP.
-
-2. **Put Flask:**
-   - Atualiza o corpo do email, com o login e senha.
-  
----
-## **sender_api_web_service(https://github.com/OnllyWal/sender_api_web_service)**
-
-1. **Envia os Emails:**
-   - Identifica os emails processados, e os envia como resposta para o agente, contendo os dados criados.
 
 ## **Requisitos**
 
